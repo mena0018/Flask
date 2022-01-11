@@ -18,4 +18,24 @@ def durationToString(minutes: int) -> str :
    
 
 
+# Convertit une note entière comprise entre 0 et $max en une chaîne de caractères
+# composée d'étoiles.
+# param $rating note comprise entre 0 et $max
+# param $max valeur maximale de la note
+# return chaîne de caractères composée d'étoiles
+
+def ratingToStars(rating, max=8):
+    noir = "\u2605"
+    blanc = "\u2606"
+    affichage = ''
+
+    if rating >= 0 and rating <= max:
+        for i in range(rating):
+            affichage += noir
+        for i in range(max-rating):
+            affichage += blanc
+    else:
+        affichage = 'ERREUR : Choisissez un nombre compris entre 0 et 8'
+         
+    return affichage
 
