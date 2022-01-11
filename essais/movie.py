@@ -5,8 +5,17 @@
 # return résultat
 
 def durationToString(minutes: int) -> str :
-    heure = ((minutes / 60) - (minutes % 60) / 60)
+    heure = minutes // 60
     minutes = minutes % 60
-    print(int(heure), ":", minutes)
+
+    if (heure < 10):
+        heure = '0'+ str(heure)
+
+    if (minutes < 10):
+        minutes = '0'+ str(minutes)
+
+    return str(heure) + ":" + str(minutes)
+   
+
 
 
