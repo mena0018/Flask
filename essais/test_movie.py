@@ -44,6 +44,8 @@ except:
 print("\nLe titre est    : ", m1.title)
 print("La durée est de : ", m1.duration, "min")
 print("La note est de  : ", m1.rating)
-
 m1.rating = 9
-print("\nLa nouvelle note est de ", m1.rating)
+print("La nouvelle note est de ", m1.rating)
+
+m1 = Movie('\nLes évadés', 122, 9.0)
+print(m1)

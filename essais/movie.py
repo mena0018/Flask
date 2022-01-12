@@ -23,7 +23,7 @@ def durationToString(minutes: int) -> str:
 # param $max valeur maximale de la note
 # return chaîne de caractères composée d'étoiles
 
-def ratingToStars(rating, max=8):
+def ratingToStars(rating, max=10):
     noir = "\u2605"
     blanc = "\u2606"
     affichage = ''
@@ -110,3 +110,6 @@ class Movie:
             raise ValueError(f"La note {rating} doit être comprise entre 0 et 10")
         self._rating = rating
 
+    def __repr__(self) -> str:
+        minutes = durationToString(self.duration)
+        return f"{self.title} ({minutes})\n {ratingToStars(9)}"
