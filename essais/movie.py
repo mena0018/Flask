@@ -57,3 +57,10 @@ class Movie:
 
     def getRating(self) -> float:
         return self._rating
+
+    def setRating(self, newRating):
+        if newRating < 0 or newRating > 10:
+            raise ValueError("Valeur inférieur à 0 ou supérieur à 10")
+        else:
+            self._rating = newRating
+

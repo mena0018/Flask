@@ -44,3 +44,6 @@ except:
 print("\nLe titre est    : ", m1.getTitle())
 print("La durée est de : ", m1.getDuration(), "min")
 print("La note est de  : ", m1.getRating())
+
+m1.setRating(9)
+print("\nLa nouvelle note est de ", m1.getRating())
