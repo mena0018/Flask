@@ -4,18 +4,17 @@
 # param $minutes durée en minutes
 # return résultat
 
-def durationToString(minutes: int) -> str :
+def durationToString(minutes: int) -> str:
     heure = minutes // 60
     minutes = minutes % 60
 
     if (heure < 10):
-        heure = '0'+ str(heure)
+        heure = '0' + str(heure)
 
     if (minutes < 10):
-        minutes = '0'+ str(minutes)
+        minutes = '0' + str(minutes)
 
     return str(heure) + ":" + str(minutes)
-   
 
 
 # Convertit une note entière comprise entre 0 et $max en une chaîne de caractères
@@ -32,10 +31,17 @@ def ratingToStars(rating, max=8):
     if rating >= 0 and rating <= max:
         for i in range(rating):
             affichage += noir
-        for i in range(max-rating):
+        for i in range(max - rating):
             affichage += blanc
     else:
         affichage = 'ERREUR : Choisissez un nombre compris entre 0 et 8'
-         
+
     return affichage
 
+
+# Classe représentant un film.
+class Movie:
+    def __init__(self, _title: str, _duration: int = 0, _rating: float = 0.0):
+        self._title = _title
+        self._duration = _duration
+        self._rating = _rating
