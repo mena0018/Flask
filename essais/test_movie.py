@@ -17,7 +17,7 @@ print(ratingToStars(4))
 print(ratingToStars(8))
 print(ratingToStars(100), "\n")
 
-m1 = Movie('Les évadés', 1)
+m1 = Movie('Les évadés', 1, 9.5)
 print(vars(m1))
 print(dir(m1), "\n")
 
@@ -39,4 +39,8 @@ try:
 except ValueError as e:
     print(f"L’exception \"{e}\" a bien été lancée.")
 except:
-    print("Ce n’est pas la bonne exception qui a été lancée !!?")
+    print("Ce n’est pas la bonne exception qui a été lancée !!? \n")
+
+print("\nLe titre est    : ", m1.getTitle())
+print("La durée est de : ", m1.getDuration(), "min")
+print("La note est de  : ", m1.getRating())

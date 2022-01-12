@@ -49,6 +49,11 @@ class Movie:
         if _rating < 0 or _rating > 10:
             raise ValueError("Valeur inférieur à 0 ou supérieur à 10")
 
+    def getTitle(self) -> str:
+        return self._title
 
+    def getDuration(self) -> int:
+        return self._duration
 
-
+    def getRating(self) -> float:
+        return self._rating
