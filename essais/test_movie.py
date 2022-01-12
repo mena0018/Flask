@@ -1,23 +1,22 @@
 # essais/test_movie.py
 from movie import Movie
 
-m1 = Movie('Les évadés', 1, 9.5)
-
 print("\nDurationToString")
 print("----------------")
 
-print(m1.durationToString(512))
-print(m1.durationToString(4096))
-print(m1.durationToString(32768))
+print(Movie.durationToString(512))
+print(Movie.durationToString(4096))
+print(Movie.durationToString(32768))
 
 print("\nratingToStars")
 print("--------------")
-print(m1.ratingToStars(0))
-print(m1.ratingToStars(2))
-print(m1.ratingToStars(4))
-print(m1.ratingToStars(8))
-print(m1.ratingToStars(100), "\n")
+print(Movie.ratingToStars(0))
+print(Movie.ratingToStars(2))
+print(Movie.ratingToStars(4))
+print(Movie.ratingToStars(8))
+print(Movie.ratingToStars(100), "\n")
 
+m1 = Movie('Les évadés', 1, 9.5)
 print(vars(m1))
 print(dir(m1), "\n")
 
