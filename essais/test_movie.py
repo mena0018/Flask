@@ -41,9 +41,9 @@ except ValueError as e:
 except:
     print("Ce n’est pas la bonne exception qui a été lancée !!? \n")
 
-print("\nLe titre est    : ", m1.getTitle())
-print("La durée est de : ", m1.getDuration(), "min")
-print("La note est de  : ", m1.getRating())
+print("\nLe titre est    : ", m1.title)
+print("La durée est de : ", m1.duration, "min")
+print("La note est de  : ", m1.rating)
 
-m1.setRating(9)
-print("\nLa nouvelle note est de ", m1.getRating())
+m1.rating = 9
+print("\nLa nouvelle note est de ", m1.rating)

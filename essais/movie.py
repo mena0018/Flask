@@ -49,18 +49,64 @@ class Movie:
         if _rating < 0 or _rating > 10:
             raise ValueError("Valeur inférieur à 0 ou supérieur à 10")
 
-    def getTitle(self) -> str:
+    # Mise en place de la propriété “title” en lecture seule
+    def _getTitle(self) -> str:
         return self._title
 
-    def getDuration(self) -> int:
+    @property
+    def title(self) -> str:
+        """
+        Retourne le titre du film.
+        Retour:
+        Titre du film
+        """
+        return self._getTitle()
+
+    # Mise en place de la propriété “duration” en lecture seule
+    def _getDuration(self) -> int:
         return self._duration
 
-    def getRating(self) -> float:
+    @property
+    def duration(self) -> int:
+        """
+        Retourne la durée du film (exprimée en minutes).
+        Retour:
+        Durée du film
+        """
+        return self._getDuration()
+
+    # Mise en place de la proprité “rating” en lecture et écriture
+    def _getRating(self) -> float:
         return self._rating
 
-    def setRating(self, newRating):
-        if newRating < 0 or newRating > 10:
-            raise ValueError("Valeur inférieur à 0 ou supérieur à 10")
-        else:
-            self._rating = newRating
+    @property
+    def rating(self) -> float:
+        """
+        Retourne la note donnée au film (comprise entre 0 et 10).
+        Retour:
+        Note du film
+        """
+        return self._getRating()
+
+    @rating.setter
+    def rating(self, r: float) -> None:
+        """
+        Modifie la note du film.
+        La note doit être comprise entre 0 et 10
+        Paramètre:
+        r: nouvelle note du film (entre 0 et 10)
+        """
+        self._setRating(r)
+
+    def _setRating(self, rating: float) -> None:
+        """
+        Modifie la note du film
+        Paramètre:
+        rating: nouvelle note du film
+        Exception:
+        ValueError: si la note n’est pas comprise entre 0 et 10
+        """
+        if not 0.0 <= rating <= 10.0:
+            raise ValueError(f"La note {rating} doit être comprise entre 0 et 10")
+        self._rating = rating
 
