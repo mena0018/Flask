@@ -8,10 +8,10 @@ def durationToString(minutes: int) -> str:
     heure = minutes // 60
     minutes = minutes % 60
 
-    if (heure < 10):
+    if heure < 10:
         heure = '0' + str(heure)
 
-    if (minutes < 10):
+    if minutes < 10:
         minutes = '0' + str(minutes)
 
     return str(heure) + ":" + str(minutes)
@@ -41,7 +41,14 @@ def ratingToStars(rating, max=8):
 
 # Classe représentant un film.
 class Movie:
-    def __init__(self, _title: str, _duration: int = 0, _rating: float = 0.0):
+    def __init__(self, _title: str, _duration: int, _rating: float = 0.0):
         self._title = _title
         self._duration = _duration
         self._rating = _rating
+
+        if _rating < 0 or _rating > 10:
+            raise ValueError("Valeur inférieur à 0 ou supérieur à 10")
+
+
+
+
