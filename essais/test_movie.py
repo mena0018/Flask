@@ -2,7 +2,6 @@
 from movie import Movie
 from movie_library import MovieLibrary
 
-
 print("\nDurationToString")
 print("----------------")
 
@@ -23,7 +22,7 @@ print(vars(m1))
 print(dir(m1), "\n")
 
 try:
-    m2: Movie = Movie('Les évadés', ["Animation", "Action", "Aventure"],122, 5.5)
+    m2: Movie = Movie('Les évadés', ["Animation", "Action", "Aventure"], 122, 5.5)
     print('Tout est OK.')
 except:
     print('Les lignes précédentes n’auraient pas dû lancer d’exception !!')
@@ -67,4 +66,17 @@ m5: Movie = Movie("La Ligne verte", ["Fantastique", "Drame", "Crime"], 189, 9.0)
 m6: Movie = Movie("Your Name", ["Romance", "Animation", "Drame"], 107, 9.0)
 
 movieLibrary: MovieLibrary = MovieLibrary()
-print(vars(movieLibrary))
+print("Avant l'ajout de film via addMovie : ", vars(movieLibrary))
+movieLibrary.addMovie(m1)
+movieLibrary.addMovie(m2)
+movieLibrary.addMovie(m3)
+movieLibrary.addMovie(m4)
+print("Après l'ajout de film via addMovie : ", vars(movieLibrary), "\n")
+
+
+print("\nTest de la méthode containsMovieWithTitle : ")
+print("-------------------------------------------")
+
+print(movieLibrary.containsMovieWithTitle("Le parrain"))
+print(movieLibrary.containsMovieWithTitle("de Schnidler"))
+print(movieLibrary.containsMovieWithTitle("Random"), "\n")
