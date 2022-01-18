@@ -1,7 +1,8 @@
 # Classe représentant un film.
 class Movie:
-    def __init__(self, _title: str, _duration: int, _rating: float = 0.0):
+    def __init__(self, _title: str, _genres: list, _duration: int, _rating: float = 0.0):
         self._title = _title
+        self._genres = _genres
         self._duration = _duration
         self._rating = _rating
 
@@ -65,13 +66,26 @@ class Movie:
         Exception:
         ValueError: si la note n’est pas comprise entre 0 et 10
         """
-        if not 0.0 <= rating <= 10.0:
-            raise ValueError(f"La note {rating} doit être comprise entre 0 et 10")
-        self._rating = rating
+        if rating < 0 or rating > 10:
+            raise ValueError(f"Note {rating} inférieur à 0 ou supérieur à 10")
+        else:
+            self._rating = rating
+
+    # Mise en place de la proprité “genres” en lecture seule
+    def _getGenres(self) -> list:
+        return self._genres
+
+    @property
+    def genres(self) -> list:
+        """
+        Retourne le genre d'un film.
+        """
+        return self._getGenres()
 
     def __repr__(self) -> str:
         minutes = self.durationToString(self.duration)
-        return f"{self.title} ({minutes})\n {self.ratingToStars(9)}"
+        genres = "/".join(self._genres)
+        return f"{self.title} ({genres} - {minutes})\n {self.ratingToStars(int(self.rating))}"
 
     @staticmethod
     def durationToString(duration: int) -> str:
@@ -91,3 +105,10 @@ class Movie:
         else:
             affichage = 'ERREUR : Choisissez un nombre compris entre 0 et 8'
         return affichage
+
+    def hasGenre(self, text: str) -> bool:
+        res = False
+        for i in self._genres:
+            if text == i:
+                res = True
+        return res
