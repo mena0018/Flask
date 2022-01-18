@@ -82,15 +82,18 @@ class Movie:
         """
         return self._getGenres()
 
+    #  Retourne une représentation complète de l’objet
     def __repr__(self) -> str:
         minutes = self.durationToString(self.duration)
         genres = "/".join(self._genres)
         return f"{self.title} ({genres} - {minutes})\n {self.ratingToStars(int(self.rating))}"
 
+    # Convertit une durée exprimée en minutes en une chaîne de caractères ayant la forme HH:MM
     @staticmethod
     def durationToString(duration: int) -> str:
         return f"{duration // 60:02d}:{duration % 60:02d}"
 
+    # Convertit une note entière comprise entre 0 et max en une chaîne de caractères composée d'étoiles
     @staticmethod
     def ratingToStars(rating, max=10):
         noir = "\u2605"
@@ -106,6 +109,7 @@ class Movie:
             affichage = 'ERREUR : Choisissez un nombre compris entre 0 et 8'
         return affichage
 
+    # Retourne vrai si cette chaîne est un des genres du film courant, faux sinon.
     def hasGenre(self, text: str) -> bool:
         res = False
         for i in self._genres:
