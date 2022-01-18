@@ -1,5 +1,7 @@
 # essais/test_movie.py
 from movie import Movie
+from movie_library import MovieLibrary
+
 
 print("\nDurationToString")
 print("----------------")
@@ -57,6 +59,12 @@ print("-----------------------------")
 print(m1.hasGenre("Drame"))
 print(m1.hasGenre("Action"))
 print(m2.hasGenre("Aventure"))
-print(m2.hasGenre("Drame"))
+print(m2.hasGenre("Drame"), "\n")
 
+m3: Movie = Movie("Le parrain", ["Drame", "Crime"], 177, 7.0)
+m4: Movie = Movie("La Liste de Schnidler", ["Drame", "Histoire", "Guerre"], 195, 6.0)
+m5: Movie = Movie("La Ligne verte", ["Fantastique", "Drame", "Crime"], 189, 9.0)
+m6: Movie = Movie("Your Name", ["Romance", "Animation", "Drame"], 107, 9.0)
 
+movieLibrary: MovieLibrary = MovieLibrary()
+print(vars(movieLibrary))
