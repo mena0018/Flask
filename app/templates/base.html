@@ -16,26 +16,37 @@
      </title>
   </head>
   <body>
-    <header class="w3-display-container w3-teal" style="height:150px;">
+    <header class="w3-display-container w3-blue-grey" style="height:150px;">
         <div class="w3-display-left" >
              <img style="height:80px; margin-left: 20px" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
         </div>
          <div class="w3-display-middle" style="font-size:30px;">
              <b>
-                {{ title }} - Mon Application
+                 {% if title is defined %}
+                    {{ title }} - Mon Application
+                 {% else %}
+                    Bienvenue dans Mon Application
+                 {% endif %}
              </b>
          </div>
     </header>
 
-    <h2  class="w3-display-container w3-teal" style="height:50px;">
-      <a class="w3-button w3-sand" style="height: 35px; font-size: 18px" href="{{ url_for('index') }}">Accueil</a>
-      <a class="w3-button w3-sand" style="height: 35px; font-size: 18px" href="{{ url_for('login') }}">Formulaire</a>
-      <a class="w3-button w3-sand" style="height: 35px; font-size: 18px" href="{{ url_for('a_propos') }}">A Propos</a>
+    <h2 class="w3-display-container w3-blue-grey" style="height:50px;">
+      <a class="w3-button" style="height: 35px; font-size: 18px" href="{{ url_for('index') }}">Accueil</a>
+      <a class="w3-button" style="height: 35px; font-size: 18px" href="{{ url_for('a_propos') }}">A Propos</a>
+      <a class="w3-button" style="height: 35px; font-size: 18px">Formulaire</a>
     </h2>
 
-
- <!-- Les pages s'afficheront ici -->
- {% block contenu %}
- {% endblock %}
+    <div style="margin: 30px 50px; padding:10px; box-shadow:5px 5px 15px grey;">
+         <!-- Les pages s'afficheront ici -->
+         {% block contenu %}
+         {% endblock %}
+     </div>
+    <footer class="w3-display-bottom-middle w3-blue-grey"
+            style="position: absolute; bottom: 0; width: 100%;">
+        <div style="margin-left:50%">
+            Copyright 2022 ©
+        </div>
+    </footer>
   </body>
 </html>
