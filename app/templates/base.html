@@ -6,6 +6,7 @@
 <!doctype html>
 <html>
   <head>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <title>
          {% if title is defined %}
             {{ title }} - Mon Application
@@ -15,13 +16,26 @@
      </title>
   </head>
   <body>
-    <nav>
-        <div>Mon Application : <a href="/index">Accueil</a></div>
-    </nav>
-    <hr>
+    <header class="w3-display-container w3-teal" style="height:150px;">
+        <div class="w3-display-left" >
+             <img style="height:80px; margin-left: 20px" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+        </div>
+         <div class="w3-display-middle" style="font-size:30px;">
+             <b>
+                {{ title }} - Mon Application
+             </b>
+         </div>
+    </header>
+
+    <h2  class="w3-display-container w3-teal" style="height:50px;">
+      <a class="w3-button w3-sand" style="height: 35px; font-size: 18px" href="{{ url_for('index') }}">Accueil</a>
+      <a class="w3-button w3-sand" style="height: 35px; font-size: 18px" href="{{ url_for('login') }}">Formulaire</a>
+      <a class="w3-button w3-sand" style="height: 35px; font-size: 18px" href="{{ url_for('a_propos') }}">A Propos</a>
+    </h2>
+
+
  <!-- Les pages s'afficheront ici -->
  {% block contenu %}
  {% endblock %}
- <!-- fin d'affichage des pages -->
   </body>
 </html>
