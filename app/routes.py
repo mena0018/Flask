@@ -20,10 +20,6 @@ def index() -> str:
     return render_template('index.html', title='Accueil', user=user, posts=posts)
 
 
-@app.route('/apropose')
+@app.route('/apropos')
 def a_propos() -> str:
     return render_template('apropos.html', title="A Propos")
-
-@app.route('/login')
-def login() -> str:
-    return"coucou"
