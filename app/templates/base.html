@@ -1,0 +1,21 @@
+<!--
+ Page titre avec barre de navigation
+ Paramètres :
+ title : titre de la page (str)
+-->
+<!doctype html>
+<html>
+  <head>
+    <title>{{ title }} - Mon Application</title>
+  </head>
+  <body>
+    <nav>
+        <div>Mon Application : <a href="/index">Accueil</a></div>
+    </nav>
+    <hr>
+ <!-- Les pages s'afficheront ici -->
+ {% block contenu %}
+ {% endblock %}
+ <!-- fin d'affichage des pages -->
+  </body>
+</html>
