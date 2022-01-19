@@ -6,7 +6,13 @@
 <!doctype html>
 <html>
   <head>
-    <title>{{ title }} - Mon Application</title>
+      <title>
+         {% if title is defined %}
+            {{ title }} - Mon Application
+        {% else %}
+             Bienvenue dans Mon Application
+        {% endif %}
+     </title>
   </head>
   <body>
     <nav>
