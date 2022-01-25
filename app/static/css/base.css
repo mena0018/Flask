@@ -1,0 +1,33 @@
+header {
+    height: 150px;
+}
+
+img {
+    height: 80px;
+    margin-left: 20px;
+}
+
+.top {
+    font-size: 30px;
+}
+
+h2 {
+    height: 50px;
+}
+
+a {
+    height: 35px;
+    font-size: 18px
+}
+
+main {
+    margin: 30px 50px;
+    padding:10px;
+    box-shadow:5px 5px 15px grey;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
