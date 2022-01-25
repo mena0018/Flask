@@ -35,13 +35,24 @@
     <h2 class="w3-display-container w3-blue-grey">
       <a class="w3-button" href="{{ url_for('index') }}">Accueil</a>
       <a class="w3-button" href="{{ url_for('a_propos') }}">A Propos</a>
-      <a class="w3-button">Formulaire</a>
+      <a class="w3-button" href=" {{ url_for('login') }}">Se connecter</a>
     </h2>
 
     <main>
-         {% block contenu %}
-         {% endblock %}
+        {% block contenu %}
+        {% endblock %}
      </main>
+
+    <!-- Affichage des messages enregistrés par la fonction flash(...) -->
+     {% with messages = get_flashed_messages() %}
+         {% if messages %}
+         <ul>
+         {% for message in messages %}
+         <li>{{ message }}</li>
+         {% endfor %}
+         </ul>
+         {% endif %}
+     {% endwith %}
 
     <footer class="w3-display-bottom-middle w3-blue-grey">Copyright 2022 ©</footer>
   </body>
