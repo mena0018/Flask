@@ -1,0 +1,4 @@
+Questions 27 )
+
+for post in Post.query.order_by(Post.id):
+    print(post.id, post.body, post.timestamp, post.user_id)
