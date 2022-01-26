@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+ {% block css %}
+       <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+ {% endblock %}
 
 {% block contenu %}
     <h1>Enregistrement</h1>
@@ -8,7 +11,7 @@
          {{ form.username.label }}<br>
          {{ form.username(size=32) }}
          {% for error in form.username.errors %}
-             <span style="color: red; font-weight:bold;">[{{ error }}]</span>
+             <span class="error">[{{ error }}]</span>
         {% endfor %}
          </p>
 
@@ -16,7 +19,7 @@
          {{ form.password.label }} <br>
          {{ form.password(size=32) }}
          {% for error in form.password.errors %}
-             <span style="color: red; font-weight:bold;">[{{ error }}]</span>
+             <span class="error">[{{ error }}]</span>
          {% endfor %}
          </p>
 
