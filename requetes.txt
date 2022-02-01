@@ -7,3 +7,9 @@ Questions 28 ) Posts triés par date :
 
 for post in Post.query.order_by(Post.timestamp):
     print(post.id, post.timestamp, post.body)
+
+
+Question 29) Affichez tous les posts contenant le mot « Symfony » (avec ou sans majuscule)
+
+for post in Post.query.filter(Post.body.ilike('%symfony%')):
+    print(post.body)
