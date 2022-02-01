@@ -13,3 +13,10 @@ Question 29) Affichez tous les posts contenant le mot « Symfony » (avec ou san
 
 for post in Post.query.filter(Post.body.ilike('%symfony%')):
     print(post.body)
+
+
+Question 30) Affichez tous les posts de Suzan :
+
+for post in Post.query.filter(Post.user_id.ilike('2')):
+    print(post.body)
+
