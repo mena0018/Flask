@@ -20,3 +20,9 @@ Question 30) Affichez tous les posts de Suzan :
 for post in Post.query.filter(Post.user_id.ilike('2')):
     print(post.body)
 
+
+Question 31) Affichez tous les posts postés à la date du 12/01/2020 ou ultérieurement:
+
+for post in Post.query.filter(Post.timestamp >= (datetime(2020, 1, 12))):
+    print(post.timestamp, post.body)
+
