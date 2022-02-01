@@ -1,4 +1,9 @@
 Questions 27 )
-
 for post in Post.query.order_by(Post.id):
     print(post.id, post.body, post.timestamp, post.user_id)
+
+
+Questions 28 ) Posts triés par date :
+
+for post in Post.query.order_by(Post.timestamp):
+    print(post.id, post.timestamp, post.body)
