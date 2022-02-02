@@ -37,7 +37,12 @@
     <h2 class="w3-display-container w3-blue-grey">
       <a class="w3-button" href="{{ url_for('index') }}">Accueil</a>
       <a class="w3-button" href="{{ url_for('a_propos') }}">A Propos</a>
-      <a class="w3-button" href=" {{ url_for('login') }}">Se connecter</a>
+
+      {% if current_user.is_anonymous %}
+          <a href="{{ url_for('login') }}">Se connecter</a>
+     {% else %}
+          <a href="{{ url_for('logout') }}">Se déconnecter</a>
+     {% endif %}
     </h2>
 
     <main>
