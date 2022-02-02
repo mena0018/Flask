@@ -1,6 +1,11 @@
+Question 26)
+for post in Post.query.order_by(Post.id):
+    print(post.author.username, post.body, post.timestamp)
+
+
 Questions 27 )
 for post in Post.query.order_by(Post.id):
-    print(post.id, post.body, post.timestamp, post.user_id)
+    print(post.id, post.author.username, post.body, post.timestamp, post.user_id)
 
 
 Questions 28 ) Posts triés par date :
