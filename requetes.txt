@@ -31,3 +31,8 @@ Question 31) Affichez tous les posts postés à la date du 12/01/2020 ou ultéri
 for post in Post.query.filter(Post.timestamp >= (datetime(2020, 1, 12))):
     print(post.timestamp, post.body)
 
+
+Question 32) Affichez le nombre de messages de chaque utilisateur trié par ordre alphabétique :
+
+for u in User.query.order_by(User.username):
+    print("Nombre de message de", u.username, ": ", u.posts.count())
