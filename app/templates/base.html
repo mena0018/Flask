@@ -41,6 +41,7 @@
       {% if current_user.is_anonymous %}
           <a href="{{ url_for('login') }}">Se connecter</a>
      {% else %}
+          <a class="w3-button" href="{{ url_for('user', username=current_user.username) }}">Profil</a>
           <a href="{{ url_for('logout') }}">Se déconnecter</a>
      {% endif %}
     </h2>
