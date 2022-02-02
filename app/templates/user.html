@@ -24,4 +24,9 @@ posts : Liste d'objets de type Post
         {{ post.author.username }} a dit : <b>{{ post.body }}</b>
     </p>
     {% endfor %}
+    {% if user == current_user %}
+    <p>
+        <a href="{{ url_for('edit_profile') }}">Editer votre profil</a>
+    </p>
+{% endif %}
 {% endblock %}
