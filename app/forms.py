@@ -36,3 +36,13 @@ class EditProfileForm(FlaskForm):
     username = StringField(label='Utilisateur', validators=[DataRequired()])
     about_me = StringField(label='A propos de moi', validators=[Length(min=0, max=140)])
     submit = SubmitField("Sauvegarder")
+
+    def __init__(self: object, name: str, *args: tuple, **kargs: dict) -> None:
+        FlaskForm.__init__(self, *args, **kargs)
+        self.original_username = name
+
+    def validate_username(self: object, username: StringField) -> None:
+        if username.data != self.original_username:
+            # On recherche si l'utilisateur existe déjà dans la base de données
+            if User.query.filter(User.username == username.data).first() is not None:
+                raise ValidationError("Ce nom existe déjà, choisissez-en un autre.")
