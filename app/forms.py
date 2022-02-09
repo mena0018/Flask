@@ -46,3 +46,6 @@ class EditProfileForm(FlaskForm):
             # On recherche si l'utilisateur existe déjà dans la base de données
             if User.query.filter(User.username == username.data).first() is not None:
                 raise ValidationError("Ce nom existe déjà, choisissez-en un autre.")
+
+
+
