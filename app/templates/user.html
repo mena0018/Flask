@@ -16,10 +16,25 @@ posts : Liste d'objets de type Post
                     <p>{{ user.about_me}}</p>
                 {%endif%}
                 {% if user.last_seen %}
-                    <p>Dernière visite : {{ user.last_seen }}</p>
+                    <p>
+                        Dernière visite : {{ user.last_seen }}
+                    </p>
                 {% endif %}
+                <p>
+                    {{ user.abonnes.count() }} abonnés, {{ user.abonnement.count() }} abonnements
+                </p>
                 {% if user == current_user %}
-                    <p><a href="{{ url_for('edit_profile') }}">Editer votre profil</a></p>
+                    <p>
+                        <a href="{{ url_for('edit_profile') }}">Editer votre profil</a>
+                    </p>
+                {% elif not current_user.is_abonne(user) %}
+                     <p>
+                        <a href="{{ url_for('abonner', username=user.username) }} ">S'abonner</a>
+                     </p>
+                {% else %}
+                     <p>
+                        <a href="{{ url_for('desabonner', username=user.username) }}">Se désabonner</a>
+                     </p>
                 {% endif %}
             </td>
         </tr>

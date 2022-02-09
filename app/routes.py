@@ -102,3 +102,35 @@ def edit_profile() -> str:
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', form=form)
+
+
+@app.route('/abonner/<username>')
+@login_required
+def abonner(username: str) -> str:
+    user = User.query.filter(User.username == username).first()
+    if user is None:
+        flash(f"L'utilisateur {username} n'a pas été trouvé.")
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('Vous ne pouvez pas vous abonner à vous-même.')
+        return redirect(url_for('index'))
+    current_user.abonner(user)
+    db.session.commit()
+    flash(f"Vous êtes maintenant abonné aux messages de {username}.")
+    return redirect(url_for('user', username=username))
+
+
+@app.route('/desabonner/<username>')
+@login_required
+def desabonner(username: str) -> str:
+    user = User.query.filter(User.username == username).first()
+    if user is None:
+        flash(f"L'utilisateur {username} n'a pas été trouvé.")
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash("Vous ne pouvez pas vous désabonner de vous-même.")
+        return redirect(url_for('user'))
+    current_user.desabonner(user)
+    db.session.commit()
+    flash(f"Vous êtes maintenant désabonné des messages de {username}.")
+    return redirect(url_for('user', username=username))
