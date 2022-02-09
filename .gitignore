@@ -4,3 +4,5 @@
 .vscode/
 # Ignorer le cache de Python
 __pycache__
+
+logs/

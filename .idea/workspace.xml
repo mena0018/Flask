@@ -4,7 +4,8 @@
     <list default="true" id="3232574d-93d8-4133-b2f5-cfffee7b35f3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/apropos.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/apropos.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +87,6 @@
       <method v="2" />
     </configuration>
     <configuration name="flask" type="Python.FlaskServer">
-      <option name="flaskDebug" value="true" />
       <module name="flask" />
       <option name="target" value="$PROJECT_DIR$/monapplication.py" />
       <option name="targetType" value="PATH" />
@@ -120,7 +120,7 @@
       <workItem from="1643202592575" duration="7266000" />
       <workItem from="1643722955293" duration="5225000" />
       <workItem from="1644398058643" duration="1857000" />
-      <workItem from="1644409864651" duration="1429000" />
+      <workItem from="1644409864651" duration="2950000" />
     </task>
     <servers />
   </component>
@@ -143,6 +143,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/flask$flask.coverage" NAME="flask Coverage Results" MODIFIED="1644410583971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/flask$flask.coverage" NAME="flask Coverage Results" MODIFIED="1644412695557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
