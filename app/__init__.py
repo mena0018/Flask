@@ -21,9 +21,8 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 # On importe le fichier contenant la définition des fonctions de vue
-# ainsi que celui des models
-from app import routes, models
+# de l’application et des erreurs ainsi que celui des models
+from app import routes, models, erreurs
 
 # Instanciation du module de gestion des dates
 moment = Moment(app)
-
