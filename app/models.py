@@ -3,6 +3,7 @@ from datetime import datetime
 from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from hashlib import md5
 
 
 class User(db.Model, UserMixin):
@@ -22,6 +23,10 @@ class User(db.Model, UserMixin):
 
     def check_password(self: object, password: str) -> bool:
         return check_password_hash(self.password_hash, password)
+
+    def avatar(self: object, size: int) -> str:
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return f"https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}"
 
 
 # Définition de la fonction qui recharge l'utilisateur connecté
