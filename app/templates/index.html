@@ -9,13 +9,25 @@
 {% block contenu %}
  <!-- Ici, on se concentre uniquement sur le contenu de la page -->
  <h1>Bonjour {{ current_user.username }}</h1>
+
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.post.label }} <br/>
+            {{ form.post }}
+            {% for error in form.post.errors %}
+                <span class="erreur"> {{ error }} </span>
+            {% endfor %}
+        </p>
+         <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+
     {% for post in current_user.posts %}
     <div>
-        <p>
-            {{ post.author.username }} a dit :
-            <b>
-                {{ post.body }}
-            </b>
+       <p>
+            {% include "_post.html" %}
         </p>
     </div>
     {% else %}

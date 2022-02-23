@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, ValidationError, Email, Length
 from app.models import User
 
@@ -47,5 +47,12 @@ class EditProfileForm(FlaskForm):
             if User.query.filter(User.username == username.data).first() is not None:
                 raise ValidationError("Ce nom existe déjà, choisissez-en un autre.")
 
+
+class PostForm(FlaskForm):
+    post = TextAreaField(label='Saisissez un message', validators=[
+        DataRequired(message="Un message est nécessaire."),
+        Length(min=1, max=140)
+    ])
+    submit = SubmitField("Sauvegarder")
 
 
