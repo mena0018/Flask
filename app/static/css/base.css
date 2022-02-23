@@ -1,13 +1,18 @@
+*{
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+}
 html, body {
    margin:0;
    padding:0;
    height:100%;
 }
-
 header {
     height: 150px;
 }
-
+h1 {
+    font-size: clamp(20px, 4vw, 50px);
+    color: #7293A8;
+}
 img {
     height: 80px;
     margin-left: 20px;
