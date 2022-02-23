@@ -20,8 +20,13 @@ def index() -> str:
         db.session.commit()
         flash("Votre message est maintenant en ligne !")
         return redirect(url_for('index'))
-    posts = current_user.posts_abonnes().all()
-    return render_template('index.html', title='Accueil', form=form, posts=posts)
+    page = request.args.get(key='page', default=1, type=int)
+    posts = current_user.posts_abonnes().paginate(page, app.config['POSTS_PAR_PAGE'], False)
+    prev_url = url_for('index', page=posts.prev_num) if posts.has_prev else None
+    next_url = url_for('index', page=posts.next_num) if posts.has_next else None
+    print(posts.items)
+    return render_template('index.html', title='Accueil', form=form, posts=posts.items,
+                           prev_url=prev_url, next_url=next_url)
 
 
 @app.route('/apropos')
@@ -133,7 +138,11 @@ def desabonner(username: str) -> str:
 @app.route('/explorer')
 @login_required
 def explorer() -> str:
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('index.html', title="Tous les messages", posts=posts)
+    page = request.args.get(key='page', default=1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(page, app.config['POSTS_PAR_PAGE'], False)
+    prev_url = url_for('explorer', page=posts.prev_num) if posts.has_prev else None
+    next_url = url_for('explorer', page=posts.next_num) if posts.has_next else None
+    return render_template('index.html', title='Tous les messages', posts=posts.items,
+                           prev_url=prev_url, next_url=next_url)
 
 

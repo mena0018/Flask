@@ -22,3 +22,6 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['lebgdu_59200@hotmail.fr']
+
+    # Configuration de la pagination
+    POSTS_PAR_PAGE = 3

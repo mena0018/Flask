@@ -32,3 +32,23 @@ main {
     box-shadow:5px 5px 15px grey;
 }
 
+.btn-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 50px;
+}
+.btn {
+    margin-left: 20px;
+    text-decoration: none;
+    background: #7293A8;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ececec;
+    font-size: 1rem;
+    box-shadow: grey 2px 2px 1px;
+    cursor: pointer;
+}
