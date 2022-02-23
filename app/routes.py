@@ -15,7 +15,7 @@ from datetime import datetime
 def index() -> str:
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author = current_user)
+        post = Post(body=form.post.data, author=current_user)
         db.session.add(post)
         db.session.commit()
         flash("Votre message est maintenant en ligne !")
@@ -72,11 +72,7 @@ def register() -> str:
 @login_required
 def user(username: str) -> str:
     user = User.query.filter(User.username == username).first_or_404()
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('user.html', user=user, posts=posts)
+    return render_template('user.html', user=user, posts=user.posts.all())
 
 
 @app.before_request
@@ -132,3 +128,12 @@ def desabonner(username: str) -> str:
     db.session.commit()
     flash(f"Vous êtes maintenant désabonné des messages de {username}.")
     return redirect(url_for('user', username=username))
+
+
+@app.route('/explorer')
+@login_required
+def explorer() -> str:
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    return render_template('index.html', title="Tous les messages", posts=posts)
+
+

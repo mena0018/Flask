@@ -2,39 +2,43 @@
  Page affichant un mot de bienvenu avec le nom de l’utilisateur
  Paramètres :
  user : dictionnaire possédant la clé 'username'
+ form : formulaire de type PostForm pour enregistrer un message
+ posts : liste de dictionnaires contenant les messages postés
 -->
+
 {% extends "base.html" %}
 
-<!-- On définit le contenu du block -->
 {% block contenu %}
- <!-- Ici, on se concentre uniquement sur le contenu de la page -->
- <h1>Bonjour {{ current_user.username }}</h1>
-
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.post.label }} <br/>
-            {{ form.post }}
-            {% for error in form.post.errors %}
-                <span class="erreur"> {{ error }} </span>
-            {% endfor %}
-        </p>
-         <p>
-            {{ form.submit() }}
-        </p>
-    </form>
-
-    {% for post in current_user.posts %}
-    <div>
-       <p>
-            {% include "_post.html" %}
-        </p>
-    </div>
+    {% if form %}
+         <h1 style="margin-bottom: 30px">Bonjour {{ current_user.username }}</h1>
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.post.label }} <br/>
+                    {{ form.post }}
+                    {% for error in form.post.errors %}
+                        <span class="erreur"> {{ error }} </span>
+                    {% endfor %}
+                </p>
+                 <p>
+                    {{ form.submit() }}
+                </p>
+            </form>
     {% else %}
-    <div>
-        <p>
-            Il n'y a pas encore de message posté.
-        </p>
-    </div>
+        <h1 style="margin-bottom: 30px">Liste de tous les messages</h1>
+    {% endif %}
+
+    {% for post in posts %}
+        <div>
+           <p>
+                {% include "_post.html" %}
+            </p>
+        </div>
+    {% else %}
+        <div>
+            <p>
+                Il n'y a pas encore de message posté.
+            </p>
+        </div>
     {% endfor %}
 {% endblock %}

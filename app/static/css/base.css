@@ -1,3 +1,9 @@
+html, body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
 header {
     height: 150px;
 }
@@ -26,8 +32,3 @@ main {
     box-shadow:5px 5px 15px grey;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
