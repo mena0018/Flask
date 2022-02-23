@@ -44,4 +44,13 @@ posts : Liste d'objets de type Post
         <p>{% include"_post.html" %}</p>
     {% endfor %}
 
+    <div class="btn-container">
+        {% if prev_url %}
+            <a class="btn btn-left" href="{{ prev_url }}">Page précédente</a>
+        {% endif %}
+        {% if next_url %}
+            <a class="btn btn-right" href="{{ next_url }}">Page suivante</a>
+        {% endif %}
+    </div>
+
 {% endblock %}

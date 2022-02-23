@@ -77,7 +77,12 @@ def register() -> str:
 @login_required
 def user(username: str) -> str:
     user = User.query.filter(User.username == username).first_or_404()
-    return render_template('user.html', user=user, posts=user.posts.all())
+    page = request.args.get(key='page', default=1, type=int)
+    posts = user.posts.paginate(page, app.config['POSTS_PAR_PAGE'], False)
+    prev_url = url_for('user', username=user.username, page=posts.prev_num) if posts.has_prev else None
+    next_url = url_for('user', username=user.username, page=posts.next_num) if posts.has_next else None
+
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
 
 
 @app.before_request
@@ -95,7 +100,7 @@ def edit_profile() -> str:
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         db.session.commit()
-        flash('Vos modification ont été enregistrées.')
+        flash('Vos modification ont toutes été enregistrées.')
         return redirect(url_for('edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
@@ -105,7 +110,7 @@ def edit_profile() -> str:
 
 @app.route('/abonner/<username>')
 @login_required
-def abonner(username: str) -> str:
+def abonner(username: str):
     user = User.query.filter(User.username == username).first()
     if user is None:
         flash(f"L'utilisateur {username} n'a pas été trouvé.")

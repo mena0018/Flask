@@ -24,4 +24,4 @@ class Config:
     ADMINS = ['lebgdu_59200@hotmail.fr']
 
     # Configuration de la pagination
-    POSTS_PAR_PAGE = 3
+    POSTS_PAR_PAGE = 2
