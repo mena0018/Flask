@@ -5,6 +5,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from hashlib import md5
 from sqlalchemy.orm.query import Query
+import jwt
+from time import time
+from app import app
 
 abonnements = db.Table('abonnements',
                        db.Column('abonne_id', db.Integer, db.ForeignKey('user.id')),
@@ -60,6 +63,20 @@ class User(db.Model, UserMixin):
             abonnements.c.abonne_id == self.id
         )
         return suivis.union(self.posts).order_by(Post.timestamp.desc())
+
+    def get_reset_password_token(self: object, expire_in: int = 600) -> str:
+        return jwt.encode({'reset_password': self.id, 'exp': time() + expire_in},
+                          key=app.config['SECRET_KEY'], algorithm='HS256'
+                          ).encode('utf-8')
+
+    @staticmethod
+    def verify_reset_password_token(token: str) -> object:
+        try:
+            id = jwt.decode(token, key=app.config['SECRET_KEY'],
+                            algorithms=['HS256'])['reset_password']
+        except:
+            return None
+        return User.query.get(id)
 
 
 # Définition de la fonction qui recharge l'utilisateur connecté

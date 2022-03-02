@@ -6,6 +6,8 @@ from flask_login import LoginManager
 from flask_moment import Moment
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
+from flask_mail import Mail
+
 import os
 
 # Création de l’application
@@ -25,12 +27,13 @@ db = SQLAlchemy(app)
 # Démarrage de l'outil de migration associé à la base de données
 migrate = Migrate(app, db)
 
-# On importe le fichier contenant la définition des fonctions de vue
-# de l’application et des erreurs ainsi que celui des models
-from app import routes, models, erreurs
+
 
 # Instanciation du module de gestion des dates
 moment = Moment(app)
+
+# Configuration du serveur de mail
+mail = Mail(app)
 
 # Mise en place d'un gestionnaire de mails pour les messages d'erreur
 if not app.debug:
@@ -65,3 +68,9 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.setLevel(logging.INFO)
     app.logger.info('Démarrage de MonApplication')
+
+
+
+# On importe le fichier contenant la définition des fonctions de vue
+# de l’application et des erreurs ainsi que celui des models
+from app import routes, models, erreurs

@@ -26,8 +26,8 @@
          <p> {{ form.remember_me() }} {{ form.remember_me.label }} </p>
          <p> {{ form.submit() }} </p>
         <p>
-            Nouvel utilisateur ?
-            <a style='margin-left: 10px;' href="{{ url_for('register') }}"> S'enregistrer</a>
+            <a href="{{ url_for('register') }}"> S'inscrire</a>
+            <a href="{{ url_for('reset_password_request') }}">Mdp oublié ?</a>
         </p>
      </form>
 {% endblock %}

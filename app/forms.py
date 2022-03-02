@@ -56,3 +56,18 @@ class PostForm(FlaskForm):
     submit = SubmitField("Sauvegarder")
 
 
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField(label='Email', validators=[
+        DataRequired(message="Veuillez remplir l'email"),
+        Email(message="Adresse mail invalide")]
+                        )
+    submit = SubmitField("Sauvegarder")
+
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField(label="Nouveau mot de passe", validators=[
+        DataRequired(message='Veuillez saisir un mot de passe  valide')])
+    password2 = PasswordField(label='Re-saissir le mot de passe', validators=[
+        DataRequired(message='Les mot de passe ne sont pas identique'), EqualTo(
+            fieldname='password', message="Les deux mots de passe ne correspondent pas.")])
+    submit = SubmitField('Valider')
